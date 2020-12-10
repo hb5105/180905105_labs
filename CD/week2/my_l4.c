@@ -24,6 +24,8 @@ const char specialsymbols[] = {
 const char * keywords[] = {
   "const",
   "char",
+  "bool",
+  "void",
   "int",
   "return",
   "for",
@@ -603,6 +605,55 @@ struct token getNextToken(FILE * f1)
   return tkn;
 
 }
+int DTsize(char str[])
+{
+	if(!strcmp(str, "int"))
+	  {
+		return sizeof(int);
+	  }
+	else if(!strcmp(str, "float"))
+		   {
+			return sizeof(float);
+		   }
+	else if(!strcmp(str, "char"))
+		   {
+			return sizeof(char);
+		   }
+	else if(!strcmp(str, "double"))
+		  {
+			return sizeof(double);
+		  }
+	return 0;
+}
+void create_symbol_table(struct token tsk){
+	struct token tk1;
+	printf("this is symbol table for %s \n",tsk.lexeme );
+	int count=1;
+  
+
+  while ((strcmp(tk1 = getNextToken(f1)).lexeme,"}")==0&&count==0)
+
+  {
+  	if(strcmp(tk1.lexeme,"{")==0)
+  		count++;
+  	else if (strcmp(tk1.lexeme,"}")==0)
+  	{
+  		count--;
+  		/* code */
+  	}
+    if (strcmp(tk1.type,"IDENTIFIER")==0)
+    {
+    	printf("<%s>\n", tk1.lexeme);
+    }
+
+  }
+
+  // {
+  	
+  //   printf("<%s, %d, %d, %s>\n", tkn.lexeme, tkn.row, tkn.col, tkn.type);
+
+  //
+
 
 int main()
 
@@ -619,17 +670,37 @@ int main()
     return 0;
 
   }
+int x=0;
+  struct token tkn,tkn1,tkn2;
 
-  struct token tkn;
+  // while (((tkn = getNextToken(f1)).row != -1))
 
-  while ((tkn = getNextToken(f1)).row != -1)
+  // {
+  	
+  //   printf("<%s, %d, %d, %s>\n", tkn.lexeme, tkn.row, tkn.col, tkn.type);
 
-  {
+  // }
 
-    printf("<%s, %d, %d, %s>\n", tkn.lexeme, tkn.row, tkn.col, tkn.type);
+  
+while (((tkn = getNextToken(f1)).row != -1))
+{
+	if(strcmp(tkn.type,"KEYWORD")==0){
+		if ((strcmp((tkn1=getNextToken(f1)).type,"IDENTIFIER")==0))		
+		{
+			/* code */if( strcmp((tkn2=getNextToken(f1)).lexeme,"(")==0)
+			{
+				 printf("<%s, %d, %d, %s> is a fn \n", tkn.lexeme, tkn.row, tkn.col, tkn.type);
+				 create_symbol_table(tkn1)
+				/* code */
+			}
+		}
 
-  }
-
-  fclose(f1);
-
+	}
 }
+}
+// if ((strcmp(tkn.type,"IDENTIFIER")==0))
+//   	{
+//   		/* code */
+//   	x++;
+//     printf("<%s, %d, %d, %s>\n", tkn.lexeme, tkn.row, tkn.col, tkn.type);
+// }

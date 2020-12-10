@@ -604,32 +604,3 @@ struct token getNextToken(FILE * f1)
 
 }
 
-int main()
-
-{
-
-  FILE * f1 = fopen(FILEINPUT, "r");
-
-  if (f1 == NULL)
-
-  {
-
-    printf("Error! File cannot be opened!\n");
-
-    return 0;
-
-  }
-
-  struct token tkn;
-
-  while ((tkn = getNextToken(f1)).row != -1)
-
-  {
-
-    printf("<%s, %d, %d, %s>\n", tkn.lexeme, tkn.row, tkn.col, tkn.type);
-
-  }
-
-  fclose(f1);
-
-}
