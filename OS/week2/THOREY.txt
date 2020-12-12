@@ -1,0 +1,19 @@
+// a new process is created by calling fork
+// fork dupl;icates current process qwith all attributes
+// exe cplus fork is all you need to create a process
+// pid_t fork(voiid);
+//call to the fork in the parent process gives pid of a new child process
+// fork in the parent returns pid 1, whereas
+// to the child it returns 0;
+FORK DUPLICATES THE PROCESS INSIDE THE COMPUTER.
+NOW INSIDE THE PARENT PID IS 1
+AND IN CHILD PID 0 RETURNED BY THE FORK.
+
+if fork fails it returns -1
+child_max is rthe limit of no of child processes the parent might have
+fork syntax:
+pid_t new1;
+new1=fork();
+
+GETPPID RETURNS THE PID OF PARWENT PROCESWS
+
