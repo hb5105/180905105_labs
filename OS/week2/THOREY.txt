@@ -17,3 +17,13 @@ new1=fork();
 
 GETPPID RETURNS THE PID OF PARWENT PROCESWS
 
+WAIT:
+
+wait system call allows the parent process to suspend its activitiees 
+inorder to complete some of its processes
+
+wait system calls accept only one argument that is a pointe rot an integer and returns a value of type pid_t
+
+if a child process is alive, the calling process will suspend its activities till the child process terminates.
+----------------------------------------------------------------------------------------------------------------------------------------
+
