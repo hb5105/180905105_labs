@@ -16,8 +16,8 @@ void printDir(char *dir,int depth)
     chdir(dir);
     while((entry = readdir(dp)) != NULL) {
         lstat(entry->d_name,&statbuf);
-        if(S_ISDIR(statbuf.st_mode)){
-            if(strcmp(".",entry->d_name) == 0 || strcmp(".." , entry->d_name ) == 0 )
+        if(S_ISDIR(statbuf.st_mode)){// checking if it is a directory
+            if(strcmp(".",entry->d_name) == 0 || strcmp(".." , entry->d_name ) == 0 )//
                 continue;
             printf("%*s%s/\n",depth,"",entry->d_name );
             printDir(entry->d_name,depth+4);
