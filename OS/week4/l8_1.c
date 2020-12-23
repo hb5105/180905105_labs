@@ -6,14 +6,13 @@
 void *thread_code(void* param)
 {
 	int n = *((int*)param);
-	int arr[n];
+	int* arr;
+	arr=(int*)calloc(n,sizeof(int));
 	arr[0] = 0;
 	arr[1] = 1;
 	for (int i = 2; i < n; i++)
-		arr[i] = arr[i - 2] + arr[i - 1];
-	int *sol = (int *)calloc(n, sizeof(int));
-	memcpy(sol, arr, sizeof(int) * n);
-	return sol;
+		arr[i] = arr[i - 2] + arr[i - 1]
+	return arr;
 }
 
 
